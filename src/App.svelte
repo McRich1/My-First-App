@@ -83,12 +83,12 @@
 	<input class = "inputBox"placeholder="Date" type="date" bind:value={date}>
 	<input class = "inputBox"placeholder= "Address" bind:value={address}>
 	<div><button on:click={clearInputFormPage} on:keydown style="margin-left:30%; cursor:pointer; margin-top:10%">Cancel</button> 
-		<button on:click={createContact} on:keydown style="margin-left:20%; cursor:pointer">Save</button>
+		<button on:click={createContact} on:keydown style="margin-left:20%; cursor:pointer;background-color: rgb(48, 113, 116); color:white">Save</button>
 	</div>
 </div>
 </div>	
 <div class= "contactInfoSection" style={activeComponent==='contactInfoSection'?'display:block':'display:none'}>
-	<div><img on:click={editContactInfo} on:keydown style= "margin-left:10%; cursor: pointer" src ="/newedit.png" alt="edit"> <img on:click={deleteContact} on:keydown style= "margin-left:30%; cursor: pointer" src ="/newtrash.png" alt="trash"></div>
+	<div><img on:click={editContactInfo} on:keydown style= "margin-left:10%; cursor: pointer" src ="/edit2.png" alt="edit"> <img on:click={deleteContact} on:keydown style= "margin-left:30%; cursor: pointer" src ="/trash2.png" alt="trash"></div>
 <div class="contactInfo">
 	<h1> Name</h1>
 	<p>{selectedContact.fullName}</p>
@@ -126,7 +126,7 @@
 		height: 100vh;
 	}
 	.leftSection{
-		width: 35%;
+		width: 30%;
 		height: 100vh;
 		background-color: rgb(48, 113, 116);
 	}
