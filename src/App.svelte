@@ -6,14 +6,14 @@
 	let address;
 	let phoneNumber;
 	let date;
-	let activeComponent;
+	let activeComponent="writeUp"
 	let duplicateError = false;
 	const displayInputFormPage = function(){
 		activeComponent = 'inputFormPage'
 	}
 	const clearInputFormPage = function(){
 		
-		activeComponent = ''
+		activeComponent = 'writeUp'
 		fullName = email = address = phoneNumber = date =""
 		duplicateError = false;
 	}
@@ -64,6 +64,15 @@
 {#each contacts as contact,index}
 <div on:click={()=>displayContactInfo(contact)} on:keydown key={index} style="Cursor:pointer; color: aliceblue; margin-left:5%; font-size: 22px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">{contact.fullName}</div>
 {/each}
+</div>
+<div style= "margin-top:5%; margin-left:22%;{activeComponent === 'writeUp'? 'display:block':'display:none'}">
+	<div class = "contaxtsTitle" >
+		<h1 style="color: black; margin-left: 7%; margin-top: 20%; font-family:calibri; font-size:45px">CONTAXTS</h1>
+		<p style="color: black;font-family: arial; margin-top:25%">TM</p> 
+	</div>
+	<p style="color: grey; font-family: Calibri;font-size:larger; margin-left: 32%"> Version 0.5</p>
+	<h1 style="color: black; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:large;margin-top:35%; margin-left: 10%">EHIMIGBAI MCRICH</h1>
+	<h1 style="color: black; font-family:sans-serif;font-size:large; margin-left: 32%">@McRich1</h1>
 </div>
 <div class="inputFormPage" style={activeComponent === 'inputFormPage'? 'display:block' : 'display:none'}>
 	<div style ="margin-top: 1%">
