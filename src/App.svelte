@@ -1,5 +1,5 @@
 <script>
-	let selectedContact = {};
+	let selectedContact = null;
 	let contacts = []; 
 	let email;
 	let fullName;
@@ -16,6 +16,7 @@
 		activeComponent = 'writeUp'
 		fullName = email = address = phoneNumber = date =""
 		duplicateError = false;
+		selectedContact=null
 	}
 	const deleteContact = function(){
 		const newContacts = contacts.filter((item)=>item !== selectedContact)
@@ -34,6 +35,15 @@
 	const createContact = function(){
 		duplicateError = false;
 	const contact = {email,address,phoneNumber,fullName,date}
+
+	if(selectedContact){
+		const data = contacts.filter((item) => item !== selectedContact)
+		duplicateError=data.some((item)=>item.fullName===fullName)
+		if(duplicateError)return
+		contacts=data
+
+	}
+	
 	if(fullName === ' ' || !fullName){
 		return;
 	}
@@ -41,10 +51,10 @@
 		duplicateError = true
 		return;
 	}
-	if(selectedContact){
-		contacts = contacts.filter((item) => item !== selectedContact)
-	}
+
+
 	contacts=[...contacts,contact]
+	selectedContact=null
 	}
 	const displayContactInfo = function(contact){
 		activeComponent ='contactInfoSection'
@@ -67,12 +77,12 @@
 </div>
 <div style= "margin-top:5%; margin-left:22%;{activeComponent === 'writeUp'? 'display:block':'display:none'}">
 	<div class = "contaxtsTitle" >
-		<h1 style="color: black; margin-left: 7%; margin-top: 20%; font-family:calibri; font-size:45px">CONTAXTS</h1>
-		<p style="color: black;font-family: arial; margin-top:25%">TM</p> 
+		<h1 style="color: rgb(48, 113, 116); margin-left: 7%; margin-top: 20%; font-family:calibri; font-size:45px">CONTAXTS</h1>
+		<p style="color: rgb(48, 113, 116);font-family: arial; margin-top:26%">TM</p> 
 	</div>
 	<p style="color: grey; font-family: Calibri;font-size:larger; margin-left: 32%"> Version 0.5</p>
-	<h1 style="color: black; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:large;margin-top:35%; margin-left: 10%">EHIMIGBAI MCRICH</h1>
-	<h1 style="color: black; font-family:sans-serif;font-size:large; margin-left: 32%">@McRich1</h1>
+	<h3 style="color: rgb(48, 113, 116); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:large;margin-top:30%; margin-left: 10%">EHIMIGBAI MCRICH</h3>
+	<h1 style="color: grey; font-family:sans-serif;font-size:large; margin-left: 32%">@McRich1</h1>
 </div>
 <div class="inputFormPage" style={activeComponent === 'inputFormPage'? 'display:block' : 'display:none'}>
 	<div style ="margin-top: 1%">
@@ -91,15 +101,15 @@
 	<div><img on:click={editContactInfo} on:keydown style= "margin-left:10%; cursor: pointer" src ="/edit2.png" alt="edit"> <img on:click={deleteContact} on:keydown style= "margin-left:30%; cursor: pointer" src ="/trash2.png" alt="trash"></div>
 <div class="contactInfo">
 	<h1> Name</h1>
-	<p>{selectedContact.fullName}</p>
+	<p>{selectedContact?.fullName}</p>
 	<h1> Phonenumber</h1>
-	<p>{selectedContact.phoneNumber}</p>
+	<p>{selectedContact?.phoneNumber}</p>
 	<h1> Email</h1>
-	<p>{selectedContact.email}</p>
+	<p>{selectedContact?.email}</p>
 	<h1>Date</h1>
-	<p>{selectedContact.date}</p>
+	<p>{selectedContact?.date}</p>
 	<h1>Address</h1>
-	<p>{selectedContact.address}</p>
+	<p>{selectedContact?.address}</p>
 </div>
 </div>
 </main>
