@@ -21,7 +21,8 @@
 	const deleteContact = function(){
 		const newContacts = contacts.filter((item)=>item !== selectedContact)
 		contacts =[...newContacts]
-		activeComponent = ''
+		email=address=phoneNumber=date=fullName=''
+		activeComponent = 'writeUp'
 	}
 	const editContactInfo = function(){
 		duplicateError = false;
