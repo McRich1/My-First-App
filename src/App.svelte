@@ -10,6 +10,8 @@
 	let duplicateError = false;
 	const displayInputFormPage = function(){
 		activeComponent = 'inputFormPage'
+		fullName = email = address = phoneNumber = date =""
+		duplicateError = false
 	}
 	const clearInputFormPage = function(){
 		
@@ -52,7 +54,6 @@
 		duplicateError = true
 		return;
 	}
-
 
 	contacts=[...contacts,contact]
 	selectedContact=null
